@@ -48,7 +48,7 @@ FROM sum_calc;
 
 ### 2. Top 5 States with Highest EV Adoption Rate (EVs as % of All Registered Vehicles)
 
-![top 5 states](visuals\2_top_5_states_ev_adoption.jpg)
+![top 5 states](visuals/2_top_5_states_ev_adoption.jpg)
 
 Summary of Findings
 - The District of Columbia and California lead EV adoption with an EV share of about 3% of total registered vehicles. These two stand out as clear frontrunners.
