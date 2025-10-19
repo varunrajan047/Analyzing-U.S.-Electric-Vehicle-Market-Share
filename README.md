@@ -9,7 +9,7 @@ With EVs accounting for 7–11% of new U.S. vehicle sales in 2025, the nation st
 
 # EV Distribution Highlights: Top vs. Bottom States
 
-![top&bottom states EV](visuals\Top & Bottom States.JPG)
+![top&bottom states EV](visuals\Top&BottomStatesforev.png)
 
 A basic look at the overall EV registration shows that California stands out dramatically at the top, far surpassing other states in sheer number of EVs. Florida and Texas also report high EV totals, yet their penetration rates remain modest relative to their overall fleet size. 
 
@@ -20,8 +20,6 @@ These charts reveal the stark disparity in EV distribution across the nation—w
 # The Analysis
 
 ### 1. Percentage of EVs, PHEVs, HEVs, and Gasoline Vehicles by State 
-
-![Percentage by state](visuals\2_EV adoption.png)
 
 Summary of Findings
 - Gasoline vehicles overwhelmingly  dominate vehicle registrations across all states, with most states showing gasoline vehicle percentages above 80%. For example, Alabama shows 84.83% gasoline vehicles.
