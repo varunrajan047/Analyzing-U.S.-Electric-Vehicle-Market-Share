@@ -1,0 +1,26 @@
+-- Com  pare EV adoption in California vs. other large states (e.g., Texas, Florida, New York).
+
+WITH total_reg_calc AS 
+(
+SELECT
+    state,
+    electric,
+    (electric + phev + hev + biodiesel + e85 + cng + propane + hydrogen + methanol + gasoline + diesel + unknown_fuel) AS total_reg
+FROM ev_regdata
+),
+ca_adoption_calc AS 
+(
+SELECT
+    ROUND((electric*1.0/
+    (electric + phev + hev + biodiesel + e85 + cng + propane + hydrogen + methanol + gasoline + diesel + unknown_fuel)*100),2) AS ca_ev_adoption
+FROM ev_regdata
+WHERE state = 'California'
+)
+SELECT
+    t.state,
+    t.electric,
+    ROUND((t.electric*1.0/t.total_reg)*100,2) AS ev_adoption_percentage,
+    ca_ev_adoption
+FROM total_reg_calc AS t
+CROSS JOIN ca_adoption_calc AS c
+WHERE t.state IN ('Texas', 'Florida', 'New York')
