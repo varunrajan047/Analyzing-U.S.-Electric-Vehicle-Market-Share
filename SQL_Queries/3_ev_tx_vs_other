@@ -1,4 +1,4 @@
--- Com  pare EV adoption in California vs. other large states (e.g., Texas, Florida, New York).
+-- Compare EV adoption in California vs. other large states (e.g., Texas, Florida, New York).
 
 WITH total_reg_calc AS 
 (
