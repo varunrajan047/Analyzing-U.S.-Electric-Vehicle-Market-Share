@@ -9,11 +9,7 @@ With EVs accounting for 7–11% of new U.S. vehicle sales in 2025, the nation st
 
 # EV Distribution Highlights: Top vs. Bottom States
 
-<<<<<<< HEAD
 ![top&bottom states EV](visuals\Top&BottomStatesforev.png)
-=======
-![top&bottom states EV](visuals/Top & Bottom States.jpg)
->>>>>>> e4b49268ba007f27b4e5db1a54e7ba26c7915d0d
 
 A basic look at the overall EV registration shows that California stands out dramatically at the top, far surpassing other states in sheer number of EVs. Florida and Texas also report high EV totals, yet their penetration rates remain modest relative to their overall fleet size. 
 
