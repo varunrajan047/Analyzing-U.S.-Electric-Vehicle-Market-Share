@@ -73,7 +73,7 @@ ORDER BY percentage_share DESC;
 
 ### 3. Compare EV adoption in California vs. other large states (e.g., Texas, Florida, New York)
 
-![California and other large states](visuals\3_ev_adop_CAvsothers.png)
+![California and other large states](visuals/2_EV adoption.png)
 
 Summary of Findings
 - California leads with an EV adoption rate of 3.41%, significantly higher than other large states.
