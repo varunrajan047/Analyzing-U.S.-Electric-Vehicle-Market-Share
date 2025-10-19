@@ -71,7 +71,7 @@ FROM total_ev_reg_calc
 ORDER BY percentage_share DESC;
 ```
 
-![Top 5 states with EV Adoption](visuals/2_EV adoption.png)
+![Top 5 states with EV Adoption](visuals/2_EV adoption.jpg)
 
 ### 3. Compare EV adoption in California vs. other large states (e.g., Texas, Florida, New York)
 
