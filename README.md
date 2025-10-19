@@ -1,6 +1,22 @@
 
 # Introduction 
+
+This project delivers a comprehensive, data-driven analysis of alternative fuel vehicle registrations across the United States, with a particular focus on electric vehicle (EV) adoption trends. Leveraging robust SQL data processing, Excel for validation, and Tableau for visualization, the study answers pressing questions vital for transportation planning—such as state-level EV penetration, top and bottom performing states, and the national landscape of alternative fuels like E85, biodiesel, and hydrogen.
+
 # Background
+
+With EVs accounting for 7–11% of new U.S. vehicle sales in 2025, the nation stands at a pivotal point in its transition toward cleaner transportation. Yet, adoption remains highly uneven: a handful of states such as California pull far ahead, while many regions lag behind. Policymakers and infrastructure planners need granular, actionable insights to guide investments, close market gaps, and support the acceleration of alternative fuel use. This project was undertaken to provide such insights, demonstrate advanced technical skills, and help drive evidence-based decisions in the growing field of sustainable mobility.
+
+# EV Distribution Highlights: Top vs. Bottom States
+
+![top&bottom states EV](visuals\Top & Bottom States.JPG)
+
+A basic look at the overall EV registration shows that California stands out dramatically at the top, far surpassing other states in sheer number of EVs. Florida and Texas also report high EV totals, yet their penetration rates remain modest relative to their overall fleet size. 
+
+In contrast, the bottom states, including North Dakota, Wyoming, and South Dakota, have very limited EV adoption, each registering fewer than 2,000 electric vehicles.
+
+These charts reveal the stark disparity in EV distribution across the nation—while some states have already embraced sizeable EV fleets, many remain in the earliest stages of adoption. This gap represents both a challenge and an opportunity for future infrastructure and policy planning, as increased support could help lagging regions accelerate EV uptake and better align with national sustainability goals.
+
 # The Analysis
 
 ### 1. Percentage of EVs, PHEVs, HEVs, and Gasoline Vehicles by State 
@@ -114,7 +130,9 @@ WHERE t.state IN ('Texas', 'Florida', 'New York')
 
 Summary of Findings
 - E85 (ethanol blend): With approximately 20,240,600 vehicles using E85, this fuel type represents 7.05% of the total registered vehicles, making it the most significant alternative fuel in use. This suggests ethanol blends have achieved notable market penetration and infrastructure support in the U.S.
-- 
+- Biodiesel: Biodiesel accounts for about 2,803,600 vehicles, representing 0.98% of the total. While much smaller than E85, biodiesel still commands a meaningful presence, especially in niche markets like commercial trucking and fleet vehicles.
+
+- Hydrogen: Hydrogen fuel cell vehicles are very limited, with only around 16,900 registered, or roughly 0.01% of total vehicles. This confirms hydrogen as a niche fuel currently, requiring more development and infrastructure to scale.
 
 ```sql
 WITH total_summary AS
@@ -134,5 +152,9 @@ SELECT
 FROM total_summary;
 ```
 
-
 # Conclusion
+This analysis demonstrates stark disparities in EV distribution across U.S. states, with California maintaining a clear lead in both total electric vehicles and market share, while most other states are still in the initial stages of adoption.
+
+Although E85 (ethanol blend) has achieved meaningful national presence at over 7%, other alternative fuels like biodiesel and hydrogen remain niche, underscoring limited diversification. 
+
+Meanwhile, gasoline vehicles continue to dominate the market, but both hybrids and plug-in hybrids are gaining a modest foothold. These trends spotlight the need for targeted infrastructure investment, policy action, and education to accelerate EV and alternative fuel growth, especially in states where the potential for adoption remains largely untapped.
