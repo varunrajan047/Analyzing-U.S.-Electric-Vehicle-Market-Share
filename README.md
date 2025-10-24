@@ -36,30 +36,6 @@ Implications for Infrastructure Planning
 - States with rising PHEV and HEV shares may benefit from hybrid fueling strategies and incentive programs to gradually transition users towards full EV adoption.
 
 
-```sql
-WITH sum_calc AS 
-(SELECT
-    state,
-    electric,
-    phev,
-    hev,
-    gasoline,
-    (electric + phev + hev + biodiesel + e85 + cng + propane + hydrogen + methanol + gasoline + diesel + unknown_fuel) AS total_vehicles
-FROM  ev_regdata
-)
-SELECT
-    state,
-    electric,
-    ROUND((electric*1.0/total_vehicles)*100,2) AS ev_percentage,
-    phev,
-    ROUND((phev*1.0/total_vehicles)*100,2) AS phev_percentage,
-    hev,
-    ROUND((hev*1.0/total_vehicles)*100,2) AS hev_percentage,
-    gasoline,
-    ROUND((gasoline*1.0/total_vehicles)*100,2) AS gas_percentage
-FROM sum_calc;
-```
-
 ### 2. Top 5 States with Highest EV Adoption Rate (EVs as % of All Registered Vehicles)
 
 ![top 5 states](visuals/2_top_5_states_ev_adoption.jpg)
@@ -70,22 +46,6 @@ Summary of Findings
 - Across the majority of states, EV adoption rates hover at around 1% or less, with many states under 1% EV penetration (40 states).
 - Several large states like Texas(0.89%) and Florida(1.37%) fall behind in EV penetration despite large absolute numbers of EVs, indicating potential growth opportunities.
 
-```sql
-WITH total_ev_reg_calc AS 
-(
-SELECT
-    state,
-    electric,
-    (electric + phev + hev + biodiesel + e85 + cng + propane + hydrogen + methanol + gasoline + diesel + unknown_fuel) AS total_reg
-FROM ev_regdata
-)
-SELECT 
-    state,
-    electric,
-    ROUND((electric*1.0/total_reg)*100,2) AS percentage_share
-FROM total_ev_reg_calc
-ORDER BY percentage_share DESC;
-```
 
 ### 3. Compare EV adoption in California vs. other large states (e.g., Texas, Florida, New York)
 
@@ -97,32 +57,6 @@ Summary of Findings
 - New York has an EV adoption rate of 1.16%, while Texas lags behind at 0.89%, the lowest among these large states.
 - Although Texas has a substantial total number of EVs (230,100), the adoption percentage is relatively low due to its large overall vehicle population.
 
-```sql
-WITH total_reg_calc AS 
-(
-SELECT
-    state,
-    electric,
-    (electric + phev + hev + biodiesel + e85 + cng + propane + hydrogen + methanol + gasoline + diesel + unknown_fuel) AS total_reg
-FROM ev_regdata
-),
-ca_adoption_calc AS 
-(
-SELECT
-    ROUND((electric*1.0/
-    (electric + phev + hev + biodiesel + e85 + cng + propane + hydrogen + methanol + gasoline + diesel + unknown_fuel)*100),2) AS ca_ev_adoption
-FROM ev_regdata
-WHERE state = 'California'
-)
-SELECT
-    t.state,
-    t.electric,
-    ROUND((t.electric*1.0/t.total_reg)*100,2) AS ev_adoption_percentage,
-    ca_ev_adoption
-FROM total_reg_calc AS t
-CROSS JOIN ca_adoption_calc AS c
-WHERE t.state IN ('Texas', 'Florida', 'New York')
-```
 
 ### 4. Highlight which alternative fuels (biodiesel, ethanol, hydrogen) have meaningful presence vs. niche usage.
 
@@ -132,23 +66,6 @@ Summary of Findings
 
 - Hydrogen: Hydrogen fuel cell vehicles are very limited, with only around 16,900 registered, or roughly 0.01% of total vehicles. This confirms hydrogen as a niche fuel currently, requiring more development and infrastructure to scale.
 
-```sql
-WITH total_summary AS
-	(SELECT 
-		SUM(biodiesel) biodiesel_total,
-		SUM(e85) AS e85_total,
-		SUM(hydrogen) AS hydrogen_total,
-		SUM(electric + phev + hev + biodiesel + e85 + cng + propane + hydrogen + methanol + gasoline + diesel + unknown_fuel) AS total_vehicles
-	FROM ev_regdata)
-SELECT 
-	biodiesel_total,
-    ROUND((biodiesel_total*1.0/total_vehicles)*100.0,2) AS biodiesel_perc,
-    e85_total,
-    ROUND((e85_total*1.0/total_vehicles)*100.0,2) AS e85_perc,
-    hydrogen_total,
-    ROUND((hydrogen_total*1.0/total_vehicles)*100.0,2) AS hydrogen_perc
-FROM total_summary;
-```
 
 # Conclusion
 This analysis demonstrates stark disparities in EV distribution across U.S. states, with California maintaining a clear lead in both total electric vehicles and market share, while most other states are still in the initial stages of adoption.
